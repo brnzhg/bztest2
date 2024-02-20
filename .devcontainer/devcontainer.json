@@ -1,0 +1,24 @@
+{
+  "name": "bztest2",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/haskell:2": {
+      "globalPackages": "hlint stylish-haskell"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "haskell.haskell"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "haskell.formattingProvider": "stylish-haskell"
+      }
+    }
+  },
+  
+  "initializeCommand" : "ls"
+  // taken from https://github.com/commercialhaskell/stack/blob/master/.devcontainer/devcontainer.json
+  // and https://github.com/chungyc/ninetynine/blob/main/.devcontainer/devcontainer.json
+}
