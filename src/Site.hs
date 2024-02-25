@@ -1,8 +1,23 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
+
 import           Hakyll
 
+
+cool :: Compiler ()
+cool = debugCompiler "yo" 
+
+bob :: IO ()
+bob = do
+    putStrLn "yo"
+    putStrLn "yoyo"
+    
+
+main :: IO ()
+main = do
+    main2
+    putStrLn "sup"
 
 --------------------------------------------------------------------------------
 -- register recipe (definition), register tags
@@ -18,8 +33,8 @@ import           Hakyll
     -- this is pure HTML i think, generated at end
 -- home page has tag categories, just make this in markdown - Protein,
 
-main :: IO ()
-main = hakyll $ do
+main2 :: IO ()
+main2 = hakyll $ do
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler

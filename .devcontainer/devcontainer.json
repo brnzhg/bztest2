@@ -3,7 +3,7 @@
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
     "ghcr.io/devcontainers-contrib/features/haskell:2": {
-      "globalPackages": "ghci-dap haskell-debug-adapter hlint stylish-haskell",
+      "globalPackages": "ghci-dap haskell-debug-adapter hlint stylish-haskell hakyll",
       "installStack": false
     },
     "ghcr.io/rocker-org/devcontainer-features/pandoc:1": {}
@@ -12,6 +12,7 @@
     "vscode": {
       "extensions": [
         "haskell.haskell",
+        "justusadam.language-haskell",
         "phoityne.phoityne-vscode",
         "hoovercj.haskell-linter",
         "vigoo.stylish-haskell",
@@ -19,7 +20,8 @@
       ],
       "settings": {
         "editor.formatOnSave": true,
-        "haskell.formattingProvider": "stylish-haskell"
+        "haskell.formattingProvider": "stylish-haskell",
+        "haskell.ghcupExecutablePath": "/home/vscode/.local/bin/ghcup"
       }
     }
   },
@@ -27,5 +29,5 @@
   // taken from https://github.com/commercialhaskell/stack/blob/master/.devcontainer/devcontainer.json
   // and https://github.com/chungyc/ninetynine/blob/main/.devcontainer/devcontainer.json
   // on startup, need to run -- cabal new-install hakyll https://jaspervdj.be/hakyll/tutorials/01-installation.html
-  //    amd 
+  //    actually now that's done in globalPackages
 }
