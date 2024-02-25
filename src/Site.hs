@@ -5,6 +5,19 @@ import           Hakyll
 
 
 --------------------------------------------------------------------------------
+-- register recipe (definition), register tags
+    -- need to make a link back to recipe (like section link)
+    -- ingredient tags? seems like good first pass
+-- same thing with ingredients
+-- maybe later: register ingredients list for recipe (can have more than one and merge), each ingredient marked with special quotes?
+    -- for now first list item marks recipe key
+-- ingredients list, ingredient line in list can say whether to link to ingredients, tags like optional, alternatives, etc
+
+-- recipes page and ingredients page
+    -- both use definition lists, plus alphabet links. Nav page at top for letter of alphabet
+    -- this is pure HTML i think, generated at end
+-- home page has tag categories, just make this in markdown - Protein,
+
 main :: IO ()
 main = hakyll $ do
     match "images/*" $ do
