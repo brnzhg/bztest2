@@ -1,0 +1,7 @@
+{
+    "haskell.toolchain": {
+        "hls": "latest",
+        "cabal": "recommended",
+        "stack": null
+    }
+}
