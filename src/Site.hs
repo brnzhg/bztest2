@@ -12,7 +12,9 @@ import           Hakyll
 
 
 newtype DomainName = DomainName String
+    deriving Eq
 newtype DomainTgtKey = DomainTgtKey String
+    deriving Eq
 
 data DomainTarget = DomainTarget
     { targetKey :: DomainTgtKey -- this is what's in the Markup
@@ -84,16 +86,16 @@ simpleTargetFilter identifier dn = do
     metadata <- getMetadata identifier
     return . fromMaybe False $ do
         ds <- lookupStringList "target-domains" metadata
-        return $ elem dn ds
+        return $ elem dn (DomainName <$> ds)
 
 -- ingredient: apple, orange, pear
 -- a page's targets are under metadata field "domain"
 simpleGetLinkedTargets
     :: MonadMetadata m
     => DomainName -> Identifier -> m [DomainTgtKey]
-simpleGetLinkedTargets dn identifier = do
+simpleGetLinkedTargets (DomainName dn) identifier = do
     metadata <- getMetadata identifier
-    return . fromMaybe [] $ lookupStringList dn
+    return . maybe [] (fmap DomainTgtKey) $ lookupStringList dn metadata
 
 
 
