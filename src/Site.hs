@@ -148,9 +148,7 @@ targetField key da tgts = field key $ \item -> do
     let tk = DomainTgtKey . domainMakeTargetKey da . itemIdentifier $ item
     return . maybe "" (coerce . targetKey) $ find (\tgt -> tk == targetKey tgt) tgts
 
---TODO need outgoing links too? should that be made into a different version compiled, replace buildBacklinks with compileLinks
 -- version will carry the link info, return Compiler Monad, or take in version and make Rules monad
--- maybe we do this second
 -- this approach could be done for everything, outgoing links and incoming links store by identifier and version
 -- when generate the actual file, make denepdency on other version of self and all incoming other version
 --TODO field to point to all ingredients used
@@ -180,7 +178,6 @@ main = hakyll $ do
     --     also look for it's links to tgt keys, and look up those linked targets
     --     noww we have linked context and backlink context
     match "linked-posts/*" $ do
-
         -- debugCompiler "debug" :: Compiler ()
         route $ setExtension "html"
         return ()
